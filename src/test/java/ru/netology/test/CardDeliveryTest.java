@@ -7,8 +7,10 @@ import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
+import java.time.Duration;
 import java.time.LocalDate;
 
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static java.time.format.DateTimeFormatter.ofPattern;
 
@@ -28,7 +30,7 @@ public class CardDeliveryTest {
         $("[data-test-id=name] input").setValue("Андреев Андрей");
         $("[data-test-id=phone] input").setValue("+12345678911");
         $(Selectors.byClassName("checkbox__box")).click();
-        $(Selectors.withText("Забронировать")).click();
+        $(withText("Забронировать")).click();
         Configuration.timeout = 11000;
         $(Selectors.byClassName("notification__title")).shouldBe(Condition.visible);
     }
@@ -46,7 +48,7 @@ public class CardDeliveryTest {
         $("[data-test-id=name] input").setValue("Андреев Андрей");
         $("[data-test-id=phone] input").setValue("+12345678911");
         $(Selectors.byClassName("checkbox__box")).click();
-        $(Selectors.withText("Забронировать")).click();
+        $(withText("Забронировать")).click();
         $("[data-test-id=city] .input__sub").shouldBe(Condition.text("Поле обязательно для заполнения"));
     }
 
@@ -63,7 +65,7 @@ public class CardDeliveryTest {
         $("[data-test-id=name] input").setValue("Андреев Андрей");
         $("[data-test-id=phone] input").setValue("+12345678911");
         $(Selectors.byClassName("checkbox__box")).click();
-        $(Selectors.withText("Забронировать")).click();
+        $(withText("Забронировать")).click();
         $("[data-test-id=city] .input__sub").shouldBe(Condition.text("Доставка в выбранный город недоступна"));
     }
 
@@ -80,7 +82,7 @@ public class CardDeliveryTest {
         $("[data-test-id=name] input").setValue("Андреев Андрей");
         $("[data-test-id=phone] input").setValue("+12345678911");
         $(Selectors.byClassName("checkbox__box")).click();
-        $(Selectors.withText("Забронировать")).click();
+        $(withText("Забронировать")).click();
         $("[data-test-id='date'] .input__sub").shouldBe(Condition.text("Заказ на выбранную дату невозможен"));
     }
 
@@ -95,7 +97,7 @@ public class CardDeliveryTest {
         $("[data-test-id=name] input").setValue("Андреев Андрей");
         $("[data-test-id=phone] input").setValue("+12345678911");
         $(Selectors.byClassName("checkbox__box")).click();
-        $(Selectors.withText("Забронировать")).click();
+        $(withText("Забронировать")).click();
         $("[data-test-id='date'] .input__sub").shouldBe(Condition.text("Неверно введена дата"));
     }
 
@@ -112,7 +114,7 @@ public class CardDeliveryTest {
         $("[data-test-id=name] input").setValue("");
         $("[data-test-id=phone] input").setValue("+12345678911");
         $(Selectors.byClassName("checkbox__box")).click();
-        $(Selectors.withText("Забронировать")).click();
+        $(withText("Забронировать")).click();
         $("[data-test-id=name] .input__sub").shouldBe(Condition.text("Поле обязательно для заполнения"));
     }
 
@@ -129,7 +131,7 @@ public class CardDeliveryTest {
         $("[data-test-id=name] input").setValue("Andreev Andrei");
         $("[data-test-id=phone] input").setValue("+12345678911");
         $(Selectors.byClassName("checkbox__box")).click();
-        $(Selectors.withText("Забронировать")).click();
+        $(withText("Забронировать")).click();
         $("[data-test-id=name] .input__sub").shouldBe(Condition.text("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
     }
 
@@ -146,7 +148,7 @@ public class CardDeliveryTest {
         $("[data-test-id=name] input").setValue("123123");
         $("[data-test-id=phone] input").setValue("+12345678911");
         $(Selectors.byClassName("checkbox__box")).click();
-        $(Selectors.withText("Забронировать")).click();
+        $(withText("Забронировать")).click();
         $("[data-test-id=name] .input__sub").shouldBe(Condition.text("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
     }
 
@@ -163,7 +165,7 @@ public class CardDeliveryTest {
         $("[data-test-id=name] input").setValue("Андреев Андрей");
         $("[data-test-id=phone] input").setValue("+12345678911");
         $(Selectors.byClassName("checkbox__box")).click();
-        $(Selectors.withText("Забронировать")).click();
+        $(withText("Забронировать")).click();
         $("[data-test-id=city] .input__sub").shouldBe(Condition.text("Доставка в выбранный город недоступна"));
     }
 
@@ -180,7 +182,7 @@ public class CardDeliveryTest {
         $("[data-test-id=name] input").setValue("Андреев Андрей");
         $("[data-test-id=phone] input").setValue("12345678911");
         $(Selectors.byClassName("checkbox__box")).click();
-        $(Selectors.withText("Забронировать")).click();
+        $(withText("Забронировать")).click();
         $("[data-test-id=phone] .input__sub").shouldBe(Condition.text("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
     }
 
@@ -197,7 +199,7 @@ public class CardDeliveryTest {
         $("[data-test-id=name] input").setValue("Андреев Андрей");
         $("[data-test-id=phone] input").setValue("");
         $(Selectors.byClassName("checkbox__box")).click();
-        $(Selectors.withText("Забронировать")).click();
+        $(withText("Забронировать")).click();
         $("[data-test-id=phone] .input__sub").shouldBe(Condition.text("Поле обязательно для заполнения"));
     }
 
@@ -214,7 +216,7 @@ public class CardDeliveryTest {
         $("[data-test-id=name] input").setValue("Андреев Андрей");
         $("[data-test-id=phone] input").setValue("+12345");
         $(Selectors.byClassName("checkbox__box")).click();
-        $(Selectors.withText("Забронировать")).click();
+        $(withText("Забронировать")).click();
         $("[data-test-id=phone] .input__sub").shouldBe(Condition.text("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
     }
 
@@ -231,7 +233,7 @@ public class CardDeliveryTest {
         $("[data-test-id=name] input").setValue("Андреев Андрей");
         $("[data-test-id=phone] input").setValue("+1234567891234567");
         $(Selectors.byClassName("checkbox__box")).click();
-        $(Selectors.withText("Забронировать")).click();
+        $(withText("Забронировать")).click();
         $("[data-test-id=phone] .input__sub").shouldBe(Condition.text("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
     }
 
@@ -247,9 +249,30 @@ public class CardDeliveryTest {
         dateForm.setValue(dateOfMeeting);
         $("[data-test-id=name] input").setValue("Андреев Андрей");
         $("[data-test-id=phone] input").setValue("+1234567891234567");
-//        $(Selectors.byClassName("checkbox__box")).click();
-        $(Selectors.withText("Забронировать")).click();
+        $(withText("Забронировать")).click();
         $(Selectors.byClassName("checkbox__text")).shouldBe(Condition.text("Я соглашаюсь с условиями обработки и использования моих персональных данных"));
+    }
+
+    @Test
+    void shouldCardDeliveryTestInteractionWithComplexElements() {
+        open("http://localhost:9999");
+        $("[data-test-id='city'] input").setValue("Ек");
+        $(".input__menu").find(withText("Екатеринбург")).click();
+        SelenideElement dateForm = $("[placeholder='Дата встречи']");
+        dateForm.sendKeys(Keys.CONTROL, "a");
+        dateForm.sendKeys(Keys.BACK_SPACE);
+        LocalDate currentDate = LocalDate.now();
+        LocalDate dateOfMeeting = LocalDate.now().plusDays(40);
+        if (currentDate.getMonthValue() != dateOfMeeting.getMonthValue()) {
+            $(".calendar__arrow_direction_right[data-step='1']").click();
+        }
+        $$("td.calendar__day").find(Condition.text(String.valueOf(dateOfMeeting.getDayOfMonth()))).click();
+        $("[data-test-id='name'] input").setValue("Андреев Андрей");
+        $("[data-test-id='phone'] input").setValue("+12345678911");
+        $("[data-test-id=agreement] .checkbox__box").click();
+        $(withText("Забронировать")).click();
+        Configuration.timeout = 11000;
+        $(Selectors.byClassName("notification__title")).shouldBe(Condition.visible);
     }
 
 }
